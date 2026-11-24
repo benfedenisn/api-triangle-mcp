@@ -1,0 +1,33 @@
+{
+  "name": "api-triangle-mcp",
+  "version": "0.1.0",
+  "mcpName": "io.github.benfedenisn/api-triangle-mcp",
+  "type": "module",
+  "description": "MCP server for Wake, Durham, and Orange NC off-market real estate leads and Triangle surplus auctions via x402.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benfedenisn/api-triangle-mcp.git"
+  },
+  "homepage": "https://api-triangle.com/docs",
+  "main": "index.js",
+  "bin": {
+    "api-triangle-mcp": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "viem": "^2.38.0",
+    "x402-fetch": "^0.7.0",
+    "zod": "^3.25.76"
+  }
+}
