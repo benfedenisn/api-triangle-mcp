@@ -13,10 +13,10 @@ const leadShape = {
   limit: z.number().int().min(1).max(200).optional().describe("Paid page size. The quote count ignores this."),
 };
 
-const server = new McpServer({
-  name: "api-triangle",
-  version: "0.1.0",
-});
+const server = new McpServer(
+  { name: "api-triangle", version: "0.1.0" },
+  { capabilities: { resources: {} } },
+);
 
 server.tool(
   "quote_triangle_leads",
