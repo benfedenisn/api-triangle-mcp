@@ -7,27 +7,35 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benfedenisn/api-triangle-mcp.git"
+    "url": "git+https://github.com/benfedenisn/api-triangle-mcp.git"
   },
   "homepage": "https://api-triangle.com/docs",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./server": "./server.js",
+    "./client": "./client.js"
+  },
   "bin": {
-    "api-triangle-mcp": "./index.js"
+    "api-triangle-mcp": "index.js"
   },
   "files": [
     "index.js",
+    "server.js",
+    "client.js",
     "README.md"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.22.0",
     "viem": "^2.38.0",
     "x402-fetch": "^0.7.0",
-    "zod": "^3.25.76"
+    "zod": "^4.6.7"
   }
 }

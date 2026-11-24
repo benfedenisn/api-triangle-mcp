@@ -1,6 +1,6 @@
 # API Triangle MCP
 
-A local [Model Context Protocol](https://modelcontextprotocol.io) server for the api-triangle.com x402 feeds. It is not imported by the website process and is not started by `npm start` in the repository root.
+A [Model Context Protocol](https://modelcontextprotocol.io) server for the api-triangle.com x402 feeds. This repository is the server. The website imports `createServer` from `api-triangle-mcp/server` for its HTTP `/mcp` route and does not start this process.
 
 Tools:
 
@@ -11,7 +11,6 @@ Tools:
 ## Run locally
 
 ```bash
-cd mcp
 npm install
 API_TRIANGLE_BASE_URL=http://127.0.0.1:3000 npm start
 ```
@@ -20,9 +19,9 @@ The process speaks MCP over stdin and stdout. Leave `API_TRIANGLE_BASE_URL` unse
 
 ## Wallet key
 
-Paid tools read `X402_PRIVATE_KEY`, a hex private key for a Base wallet that holds USDC. The tool uses `x402-fetch` to answer the HTTP 402 challenge. The website charges the amount in `X402_AMOUNT_ATOMIC` (6 decimal USDC) to `X402_PAY_TO`.
+Paid tools read `X402_PRIVATE_KEY`, a hex private key for a Base wallet that holds USDC. The tool uses `x402-fetch` to answer the HTTP 402 challenge. The website charges the amount in `X402_AMOUNT_ATOMIC` (6 decimal USDC) to `X402_PAY_TO`. A subscription key in `API_TRIANGLE_API_KEY` is sent as `X-API-Key` instead of a wallet payment.
 
-Do not commit the key. If the variable is unset, `fetch_triangle_leads` and `search_triangle_surplus` return the 402 body so you can see the price and wallet before paying. `quote_triangle_leads` never needs the key.
+Do not commit either value. If both are unset, a paid tool still requests the URL and returns an error that includes the 402 body, so the price is visible before you configure a key. `quote_triangle_leads` never needs a key. Network failures and non-2xx responses are tool errors.
 
 ## Claude Desktop
 
@@ -33,10 +32,11 @@ Add this to `~/Library/Application Support/Claude/claude_desktop_config.json` an
   "mcpServers": {
     "api-triangle": {
       "command": "node",
-      "args": ["/absolute/path/to/api-triangle/mcp/index.js"],
+      "args": ["/absolute/path/to/api-triangle-mcp/index.js"],
       "env": {
         "API_TRIANGLE_BASE_URL": "https://api-triangle.com",
-        "X402_PRIVATE_KEY": "0xYOUR_BASE_PRIVATE_KEY"
+        "X402_PRIVATE_KEY": "0xYOUR_BASE_PRIVATE_KEY",
+        "API_TRIANGLE_API_KEY": ""
       }
     }
   }

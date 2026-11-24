@@ -2,7 +2,7 @@
     "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
     "name": "io.github.benfedenisn/api-triangle-mcp",
     "title": "API Triangle",
-    "description": "Wake, Durham, and Orange NC off-market real estate leads (absentee owners, active tax liens) and Triangle surplus auctions via x402.",
+    "description": "Wake, Durham & Orange NC off-market real estate leads and Triangle surplus auctions via x402.",
     "version": "0.1.0",
     "repository": {
       "url": "https://github.com/benfedenisn/api-triangle-mcp",
